@@ -269,6 +269,308 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/19/linux-add-user/" itemprop="url">
+                  Linux用户相关操作
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-19T11:18:08+08:00" content="2016-10-19">
+              2016-10-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#useradd demo	--添加用户</span></div><div class="line"><span class="comment">#usermod -g root demo	--添加到root组</span></div><div class="line"><span class="comment">#vim /etc/sudoers	--添加权限</span></div><div class="line">···</div><div class="line"><span class="comment">## Allow root to run any commands anywhere</span></div><div class="line">root    ALL=(ALL)       ALL</div><div class="line">slave   ALL=(ALL)       ALL</div><div class="line">···</div></pre></td></tr></table></figure>
+<p>也可以修改<code>/etc/passwd</code>文件实现更改用户组功能<br>有时，需要添加运行特定程序的用户，但又需要限制用户的权限，可以使用如下方式添加不具有登录权限的用户<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#user add slave</span></div><div class="line"><span class="comment">#usermod -s /sbin/nologin slave</span></div></pre></td></tr></table></figure></p>
+<p>当系统为Ubuntu时，更改为<code>/usr/sbin/nologin</code></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/19/modify-sysctl-conf/" itemprop="url">
+                  修改/etc/sysctl.conf,使其生效
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-19T11:16:25+08:00" content="2016-10-19">
+              2016-10-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/home/sscc# sysctl -p</div><div class="line">net.ipv4.ip_forward = 1</div><div class="line">net.ipv4.conf.all.send_redirects = 1</div><div class="line">net.ipv4.conf.all.accept_source_route = 1</div><div class="line">sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-arptables: 没有那个文件或目录</div><div class="line">sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-iptables: 没有那个文件或目录</div><div class="line">sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-ip6tables: 没有那个文件或目录</div></pre></td></tr></table></figure>
+<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/home/sscc#  modprobe br_netfilter</div><div class="line">root@ubuntu:/home/sscc# ls /proc/sys/net/bridge/</div><div class="line">bridge-nf-call-arptables  bridge-nf-call-iptables        bridge-nf-filter-vlan-tagged</div><div class="line">bridge-nf-call-ip6tables  bridge-nf-filter-pppoe-tagged  bridge-nf-pass-vlan-input-dev</div><div class="line">root@ubuntu:/home/sscc# sysctl -p</div><div class="line">net.ipv4.ip_forward = 1</div><div class="line">net.ipv4.conf.all.send_redirects = 1</div><div class="line">net.ipv4.conf.all.accept_source_route = 1</div><div class="line">net.bridge.bridge-nf-call-arptables = 0</div><div class="line">net.bridge.bridge-nf-call-iptables = 0</div><div class="line">net.bridge.bridge-nf-call-ip6tables = 0</div></pre></td></tr></table></figure>
+<h4 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h4><p>The /proc/sys/net/bridge/* files are only created after br_netfilter<br>(kernel module) is loaded:</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/10/19/Pycharm-Remote-Debug/" itemprop="url">
+                  Pycharm实现python远程调试
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-19T11:14:13+08:00" content="2016-10-19">
+              2016-10-19
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>在远程客户端[linux]安装pycharm-debug.egg 首先，下载安装easy_install的安装脚本<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#wget https://bootstrap.pypa.io/ez_setup.py</span></div><div class="line"><span class="comment">#python ez_setup.py</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>pycharm-debug.egg文件在Pycharm安装目录下的debug-eggs文件夹中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#easy_install pycharm-debug.egg</span></div></pre></td></tr></table></figure></p>
+<p>类似地，在服务端[Windows]中安装pycharm-debug.egg<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;python ez_setup.py</div><div class="line">&gt;easy_install.exe pycharm.egg</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>在Pycharm中配置Remote Debug Edit Configuration-&gt;+&gt;Python Remote remote_debug</p>
+<pre><code>Local host name 填写Windows服务端IP        
+Port 填写任意未被占用端口
+* 测试:在客户端python脚本中添加如下
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#vim remote.py</span></div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> pydevd</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">debugtest</span><span class="params">()</span>:</span></div><div class="line">	pydevd.settrace(<span class="string">'192.168.22.148'</span>, port=<span class="number">9901</span>, stdoutToServer=<span class="keyword">True</span>, stderrToServer=<span class="keyword">True</span>)</div><div class="line">		a = <span class="number">10</span></div><div class="line">			b = <span class="number">20</span></div><div class="line">				c = a + b</div><div class="line">					<span class="keyword">print</span> c</div><div class="line"></div><div class="line">					<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">						debugtest()</div></pre></td></tr></table></figure>
+
+                        最后，打开自定义的Remote debug，并在客户端执行该脚本文件 可以看到如下![](remote_debug.png)        
+                        **PS：**客户端无法Ping通Windows时，在防火墙-&gt;高级-&gt;入站规则 中启用ICMP
+</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/10/19/Linux-Network-Recommands/" itemprop="url">
                   Linux Network Recommands
                 </a>
@@ -385,7 +687,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">4</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -395,7 +697,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
