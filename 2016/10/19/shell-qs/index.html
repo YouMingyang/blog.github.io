@@ -4,14 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>飞扬的小屋</title>
+  <title>shell脚本实现快速排序算法 | 飞扬的小屋</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="飞扬的小屋">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="近段需要在shell中实现自定义排序，联想数据结构课程，哈哈，没多想，遂决定使用快速排序算法。然而百度之，发现很多相同的版本，而且呵呵哒，完全不理解为什么写的那么恶心啊。自己对照C语言版本的实现如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445# cat quick_sort.sh">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell脚本实现快速排序算法">
+<meta property="og:url" content="http://yoursite.com/2016/10/19/shell-qs/index.html">
 <meta property="og:site_name" content="飞扬的小屋">
+<meta property="og:description" content="近段需要在shell中实现自定义排序，联想数据结构课程，哈哈，没多想，遂决定使用快速排序算法。然而百度之，发现很多相同的版本，而且呵呵哒，完全不理解为什么写的那么恶心啊。自己对照C语言版本的实现如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445# cat quick_sort.sh">
+<meta property="og:updated_time" content="2016-12-12T01:39:41.253Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="飞扬的小屋">
+<meta name="twitter:title" content="shell脚本实现快速排序算法">
+<meta name="twitter:description" content="近段需要在shell中实现自定义排序，联想数据结构课程，哈哈，没多想，遂决定使用快速排序算法。然而百度之，发现很多相同的版本，而且呵呵哒，完全不理解为什么写的那么恶心啊。自己对照C语言版本的实现如下：123456789101112131415161718192021222324252627282930313233343536373839404142434445# cat quick_sort.sh">
   
     <link rel="alternative" href="/atom.xml" title="飞扬的小屋" type="application/atom+xml">
   
@@ -113,9 +117,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-linux-add-user" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-shell-qs" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -124,55 +126,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/linux-add-user/">Linux用户相关操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="添加用户"><a href="#添加用户" class="headerlink" title="添加用户"></a>添加用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#useradd demo	--添加用户</span></div><div class="line"><span class="comment">#usermod -g root demo	--添加到root组</span></div><div class="line"><span class="comment">#vim /etc/sudoers	--添加权限</span></div><div class="line">···</div><div class="line"><span class="comment">## Allow root to run any commands anywhere</span></div><div class="line">root    ALL=(ALL)       ALL</div><div class="line">slave   ALL=(ALL)       ALL</div><div class="line">···</div></pre></td></tr></table></figure>
-<p>也可以修改<code>/etc/passwd</code>文件实现更改用户组功能<br>有时，需要添加运行特定程序的用户，但又需要限制用户的权限，可以使用如下方式添加不具有登录权限的用户<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#user add slave</span></div><div class="line"><span class="comment">#usermod -s /sbin/nologin slave</span></div></pre></td></tr></table></figure></p>
-<p>当系统为Ubuntu时，更改为<code>/usr/sbin/nologin</code></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/19/linux-add-user/" class="archive-article-date">
-  	<time datetime="2016-10-19T03:18:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-19</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-shell-qs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/shell-qs/">shell脚本实现快速排序算法</a>
+    <h1 class="article-title" itemprop="name">
+      shell脚本实现快速排序算法
     </h1>
   
 
@@ -198,187 +153,54 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
   
-    <article id="post-modify-sysctl-conf" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+<nav id="article-nav">
+  
+    <a href="/2016/10/19/linux-add-user/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/modify-sysctl-conf/">修改/etc/sysctl.conf,使其生效</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/home/sscc# sysctl -p</div><div class="line">net.ipv4.ip_forward = 1</div><div class="line">net.ipv4.conf.all.send_redirects = 1</div><div class="line">net.ipv4.conf.all.accept_source_route = 1</div><div class="line">sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-arptables: 没有那个文件或目录</div><div class="line">sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-iptables: 没有那个文件或目录</div><div class="line">sysctl: cannot stat /proc/sys/net/bridge/bridge-nf-call-ip6tables: 没有那个文件或目录</div></pre></td></tr></table></figure>
-<h5 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法:"></a>解决办法:</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">root@ubuntu:/home/sscc#  modprobe br_netfilter</div><div class="line">root@ubuntu:/home/sscc# ls /proc/sys/net/bridge/</div><div class="line">bridge-nf-call-arptables  bridge-nf-call-iptables        bridge-nf-filter-vlan-tagged</div><div class="line">bridge-nf-call-ip6tables  bridge-nf-filter-pppoe-tagged  bridge-nf-pass-vlan-input-dev</div><div class="line">root@ubuntu:/home/sscc# sysctl -p</div><div class="line">net.ipv4.ip_forward = 1</div><div class="line">net.ipv4.conf.all.send_redirects = 1</div><div class="line">net.ipv4.conf.all.accept_source_route = 1</div><div class="line">net.bridge.bridge-nf-call-arptables = 0</div><div class="line">net.bridge.bridge-nf-call-iptables = 0</div><div class="line">net.bridge.bridge-nf-call-ip6tables = 0</div></pre></td></tr></table></figure>
-<h4 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h4><p>The /proc/sys/net/bridge/* files are only created after br_netfilter<br>(kernel module) is loaded:</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/19/modify-sysctl-conf/" class="archive-article-date">
-  	<time datetime="2016-10-19T03:16:25.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-19</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/sysctl/">sysctl</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Pycharm-Remote-Debug" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+          Linux用户相关操作
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/Pycharm-Remote-Debug/">Pycharm实现python远程调试</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>在远程客户端[linux]安装pycharm-debug.egg 首先，下载安装easy_install的安装脚本<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#wget https://bootstrap.pypa.io/ez_setup.py</span></div><div class="line"><span class="comment">#python ez_setup.py</span></div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>pycharm-debug.egg文件在Pycharm安装目录下的debug-eggs文件夹中<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#easy_install pycharm-debug.egg</span></div></pre></td></tr></table></figure></p>
-<p>类似地，在服务端[Windows]中安装pycharm-debug.egg<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt;python ez_setup.py</div><div class="line">&gt;easy_install.exe pycharm.egg</div></pre></td></tr></table></figure></p>
-<ul>
-<li>在Pycharm中配置Remote Debug Edit Configuration-&gt;+&gt;Python Remote remote_debug</li>
-</ul>
-<p>Local host name 填写Windows服务端IP<br>Port 填写任意未被占用端口</p>
-<ul>
-<li>测试:在客户端python脚本中添加如下<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#vim remote.py</span></div><div class="line"><span class="comment">#!/usr/bin/env python</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> pydevd</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">debugtest</span><span class="params">()</span>:</span></div><div class="line">	pydevd.settrace(<span class="string">'192.168.22.148'</span>, port=<span class="number">9901</span>, stdoutToServer=<span class="keyword">True</span>, stderrToServer=<span class="keyword">True</span>)</div><div class="line">a = <span class="number">10</span></div><div class="line">	b = <span class="number">20</span></div><div class="line">c = a + b</div><div class="line">	<span class="keyword">print</span> c</div><div class="line"></div><div class="line">	<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">debugtest()</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>最后，打开自定义的Remote debug，并在客户端执行该脚本文件 可以看到如下<img src="/img/remote_debug.png" alt=""><br><strong>PS：</strong>客户端无法Ping通Windows时，在防火墙-&gt;高级-&gt;入站规则 中启用ICMP</p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/19/Pycharm-Remote-Debug/" class="archive-article-date">
-  	<time datetime="2016-10-19T03:14:13.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-19</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pycharm-Remote-Debug/">Pycharm, Remote Debug</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Linux-Network-Recommands" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/Linux-Network-Recommands/">Linux 资料收集</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="网络相关"><a href="#网络相关" class="headerlink" title="网络相关"></a>网络相关</h4><ol>
-<li><a href="http://blog.csdn.net/hzhsan/article/details/44653403" target="_blank" rel="external">Linux下虚拟机网络配置Bridge方式</a>,KVM下安装虚拟机选择网络的时候会用到.</li>
-<li><a href="http://blog.csdn.net/daisy_chenting/article/details/7058145" target="_blank" rel="external">iptables</a>,那张图画的可以.</li>
-<li><a href="http://blog.csdn.net/losemyheaven/article/details/50011879" target="_blank" rel="external">建立虚拟网卡与vLan</a></li>
-</ol>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/19/Linux-Network-Recommands/" class="archive-article-date">
-  	<time datetime="2016-10-19T02:45:03.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-19</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Linux-Networks/">Linux Networks</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
+      </div>
+    </a>
   
   
+    <a href="/2016/10/19/modify-sysctl-conf/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">修改/etc/sysctl.conf,使其生效</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="shell-qs" data-title="shell脚本实现快速排序算法" data-url="http://yoursite.com/2016/10/19/shell-qs/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -400,8 +222,8 @@
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
