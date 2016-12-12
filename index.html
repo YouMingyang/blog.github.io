@@ -115,6 +115,52 @@
       <div class="body-wrap">
         
   
+    <article id="post-shell-qs" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/12/12/shell-qs/">shell脚本实现快速排序算法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>近段需要在shell中实现自定义排序，联想数据结构课程，哈哈，没多想，遂决定使用快速排序算法。然而百度之，发现很多相同的版本，而且呵呵哒，完全不理解为什么写的那么恶心啊。<br>自己对照C语言版本的实现如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat quick_sort.sh </span></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">a=(132 2 239 27 92 -12 23)</div><div class="line"></div><div class="line"><span class="function"><span class="title">quick_sort</span></span>()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> [ <span class="variable">$1</span> -ge <span class="variable">$2</span> ]; <span class="keyword">then</span></div><div class="line">         <span class="built_in">return</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line">    </div><div class="line">    i=<span class="variable">$1</span></div><div class="line">    j=<span class="variable">$2</span></div><div class="line">    key=<span class="variable">$&#123;a[$1]&#125;</span></div><div class="line">    </div><div class="line">    <span class="keyword">while</span> [  <span class="variable">$i</span> <span class="_">-lt</span>  <span class="variable">$j</span> ]</div><div class="line">    <span class="keyword">do</span></div><div class="line">        <span class="keyword">while</span> [  <span class="variable">$i</span> <span class="_">-lt</span>  <span class="variable">$j</span> ] &amp;&amp; [  <span class="variable">$key</span> -le  <span class="variable">$&#123;a[$j]&#125;</span> ]</div><div class="line">        <span class="keyword">do</span></div><div class="line">            j=$((<span class="variable">$j</span>-1))</div><div class="line">        <span class="keyword">done</span></div><div class="line">        mid=<span class="variable">$&#123;a[$i]&#125;</span></div><div class="line">        a[<span class="variable">$i</span>]=<span class="variable">$&#123;a[$j]&#125;</span></div><div class="line">        a[<span class="variable">$j</span>]=<span class="variable">$mid</span></div><div class="line">        <span class="keyword">while</span> [  <span class="variable">$i</span> <span class="_">-lt</span>  <span class="variable">$j</span> ] &amp;&amp; [  <span class="variable">$key</span> -ge  <span class="variable">$&#123;a[$i]&#125;</span> ]</div><div class="line">        <span class="keyword">do</span></div><div class="line">            i=$((<span class="variable">$i</span>+1))</div><div class="line">        <span class="keyword">done</span></div><div class="line">        mid=<span class="variable">$&#123;a[$j]&#125;</span></div><div class="line">        a[<span class="variable">$j</span>]=<span class="variable">$&#123;a[$i]&#125;</span></div><div class="line">        a[<span class="variable">$i</span>]=<span class="variable">$mid</span></div><div class="line">    <span class="keyword">done</span></div><div class="line">    arr[<span class="variable">$si</span>]=<span class="variable">$key</span></div><div class="line">    quick_sort <span class="variable">$1</span> $((<span class="variable">$i</span>-1))</div><div class="line">    quick_sort $((<span class="variable">$i</span>+1)) $((<span class="variable">$2</span>))</div><div class="line">&#125;</div><div class="line"></div><div class="line">len=$((<span class="variable">$&#123;#a[@]&#125;</span>-1))</div><div class="line"></div><div class="line">quick_sort 0 <span class="variable">$len</span> </div><div class="line"></div><div class="line"><span class="keyword">for</span> ((i=0;i&lt;=<span class="variable">$len</span>;i++))</div><div class="line"><span class="keyword">do</span></div><div class="line">     <span class="built_in">echo</span> -n <span class="variable">$&#123;a[$i]&#125;</span> <span class="string">" "</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span></div></pre></td></tr></table></figure></p>
+<p>测试结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#./quick_sort.sh </div><div class="line">-12  2  23  27  92  132  239</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/12/12/shell-qs/" class="archive-article-date">
+  	<time datetime="2016-12-12T03:18:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-12-12</time>
+</a>
+      
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+
+
+  
     <article id="post-linux-add-user" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -142,52 +188,6 @@
     <div class="article-info article-info-index">
       
       <a href="/2016/10/19/linux-add-user/" class="archive-article-date">
-  	<time datetime="2016-10-19T03:18:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-19</time>
-</a>
-      
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-shell-qs" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/19/shell-qs/">shell脚本实现快速排序算法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>近段需要在shell中实现自定义排序，联想数据结构课程，哈哈，没多想，遂决定使用快速排序算法。然而百度之，发现很多相同的版本，而且呵呵哒，完全不理解为什么写的那么恶心啊。<br>自己对照C语言版本的实现如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># cat quick_sort.sh </span></div><div class="line"><span class="meta">#!/bin/bash</span></div><div class="line">a=(132 2 239 27 92 -12 23)</div><div class="line"></div><div class="line"><span class="function"><span class="title">quick_sort</span></span>()</div><div class="line">&#123;</div><div class="line">    <span class="keyword">if</span> [ <span class="variable">$1</span> -ge <span class="variable">$2</span> ]; <span class="keyword">then</span></div><div class="line">         <span class="built_in">return</span></div><div class="line">    <span class="keyword">fi</span></div><div class="line">    </div><div class="line">    i=<span class="variable">$1</span></div><div class="line">    j=<span class="variable">$2</span></div><div class="line">    key=<span class="variable">$&#123;a[$1]&#125;</span></div><div class="line">    </div><div class="line">    <span class="keyword">while</span> [  <span class="variable">$i</span> <span class="_">-lt</span>  <span class="variable">$j</span> ]</div><div class="line">    <span class="keyword">do</span></div><div class="line">        <span class="keyword">while</span> [  <span class="variable">$i</span> <span class="_">-lt</span>  <span class="variable">$j</span> ] &amp;&amp; [  <span class="variable">$key</span> -le  <span class="variable">$&#123;a[$j]&#125;</span> ]</div><div class="line">        <span class="keyword">do</span></div><div class="line">            j=$((<span class="variable">$j</span>-1))</div><div class="line">        <span class="keyword">done</span></div><div class="line">        mid=<span class="variable">$&#123;a[$i]&#125;</span></div><div class="line">        a[<span class="variable">$i</span>]=<span class="variable">$&#123;a[$j]&#125;</span></div><div class="line">        a[<span class="variable">$j</span>]=<span class="variable">$mid</span></div><div class="line">        <span class="keyword">while</span> [  <span class="variable">$i</span> <span class="_">-lt</span>  <span class="variable">$j</span> ] &amp;&amp; [  <span class="variable">$key</span> -ge  <span class="variable">$&#123;a[$i]&#125;</span> ]</div><div class="line">        <span class="keyword">do</span></div><div class="line">            i=$((<span class="variable">$i</span>+1))</div><div class="line">        <span class="keyword">done</span></div><div class="line">        mid=<span class="variable">$&#123;a[$j]&#125;</span></div><div class="line">        a[<span class="variable">$j</span>]=<span class="variable">$&#123;a[$i]&#125;</span></div><div class="line">        a[<span class="variable">$i</span>]=<span class="variable">$mid</span></div><div class="line">    <span class="keyword">done</span></div><div class="line">    arr[<span class="variable">$si</span>]=<span class="variable">$key</span></div><div class="line">    quick_sort <span class="variable">$1</span> $((<span class="variable">$i</span>-1))</div><div class="line">    quick_sort $((<span class="variable">$i</span>+1)) $((<span class="variable">$2</span>))</div><div class="line">&#125;</div><div class="line"></div><div class="line">len=$((<span class="variable">$&#123;#a[@]&#125;</span>-1))</div><div class="line"></div><div class="line">quick_sort 0 <span class="variable">$len</span> </div><div class="line"></div><div class="line"><span class="keyword">for</span> ((i=0;i&lt;=<span class="variable">$len</span>;i++))</div><div class="line"><span class="keyword">do</span></div><div class="line">     <span class="built_in">echo</span> -n <span class="variable">$&#123;a[$i]&#125;</span> <span class="string">" "</span></div><div class="line"><span class="keyword">done</span></div><div class="line"><span class="built_in">echo</span></div></pre></td></tr></table></figure></p>
-<p>测试结果：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#./quick_sort.sh </div><div class="line">-12  2  23  27  92  132  239</div></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/19/shell-qs/" class="archive-article-date">
   	<time datetime="2016-10-19T03:18:08.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-19</time>
 </a>
       
